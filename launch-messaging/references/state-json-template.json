@@ -1,0 +1,72 @@
+{
+  "project": "[Product Name] — Launch Messaging",
+  "created": "YYYY-MM-DD",
+  "last_updated": "YYYY-MM-DD",
+  "current_phase": 1,
+  "current_phase_name": "Research & Positioning",
+  "source_materials": {
+    "indexed": null,
+    "files": []
+  },
+  "hard_rules": [],
+  "phases": {
+    "0_project_setup": {
+      "status": "complete",
+      "completed": "YYYY-MM-DD",
+      "tasks": {
+        "folder_created": "complete",
+        "launch_md_written": "complete",
+        "state_json_initialized": "complete"
+      }
+    },
+    "1_phrase_library": {
+      "status": "not_started",
+      "tasks": {
+        "source_materials_read": "not_started",
+        "lexicon_built": "not_started"
+      },
+      "output_file": "research/language-lexicon.md"
+    },
+    "2_hard_rules": {
+      "status": "not_started",
+      "tasks": {
+        "language_constraints": "not_started",
+        "named_customer_rules": "not_started",
+        "lead_differentiator": "not_started",
+        "vision_statement": "not_started"
+      }
+    },
+    "3_messaging_template": {
+      "status": "not_started",
+      "fill_progress": {
+        "step_1_best_fit_customer": "not_started",
+        "step_2_market_category": "not_started",
+        "step_3_competitive_alternatives": "not_started",
+        "step_4_capabilities_and_value": "not_started",
+        "step_5_one_line_positioning": "not_started",
+        "step_6_galvanizing_narrative": "not_started",
+        "step_7_messaging_pillars": "not_started",
+        "step_8_proof_point_bank": "not_started",
+        "step_9_persona_angles": "not_started",
+        "step_10_competitive_frame": "not_started",
+        "step_11_asset_mapping_and_pitches": "not_started"
+      },
+      "output_file": "deliverables/messaging-hierarchy-template.md"
+    },
+    "4_word_document": {
+      "status": "not_started",
+      "output_file": "deliverables/[ProductName]-Messaging-Hierarchy.docx"
+    },
+    "5_downstream_assets": {
+      "status": "not_started",
+      "tasks": {
+        "website_copy": "not_started",
+        "press_release": "not_started",
+        "sales_enablement": "not_started",
+        "launch_content": "not_started"
+      }
+    }
+  },
+  "decisions": [],
+  "notes": []
+}
