@@ -3,6 +3,7 @@
 ## Quick Reference
 - **Owner**: [Name, Title @ Company]
 - **Product**: [Product Name]
+- **Mode**: [From scratch / Quarterly refresh]
 - **Single source of truth**: `deliverables/messaging-hierarchy-template.md`
 - **Formatted deliverable**: `deliverables/[ProductName]-Messaging-Hierarchy.docx`
 
@@ -11,14 +12,17 @@
 ## HOW TO RESUME THIS PROJECT
 
 1. **Read this file** — project context, rules, and workflow
-2. **Read the source of truth** — `deliverables/messaging-hierarchy-template.md` (complete + approved content)
-3. **Check what [Owner] wants**:
+2. **Read `CHECKLIST.md`** — exactly where the project stands, stage by stage
+3. **Read the source of truth** — `deliverables/messaging-hierarchy-template.md` (complete + approved content)
+4. **Check what [Owner] wants**:
    - Editing messaging? → Follow "Editing Workflow" below
    - Creating a downstream asset? → Pull from the template, see "Phase Plan"
    - Adding new source material? → Extract to `research/language-lexicon.md`, then update template
+   - Running the next quarterly refresh? → Follow the skill's four-stage discovery process, logging into `DECISIONS.md` as you go
    - Updating named customers? → Re-verify before any public-facing changes
 
-4. **Read additional files only as needed**:
+5. **Read additional files only as needed**:
+   - `DECISIONS.md` — every owner ruling, numbered and dated, in the owner's own words
    - `research/language-lexicon.md` — exact phrases from source docs
    - `state.json` — decision log and rationale
    - `deliverables/FILL-ORDER.md` — HISTORICAL ONLY
@@ -68,11 +72,13 @@ Use [specific number]. Not [other versions]. [Who corrected this and when.]
 ```
 [project-name]-launch-messaging/
 ├── LAUNCH.md                           ← YOU ARE HERE
-├── state.json                          ← Decisions + progress
+├── CHECKLIST.md                         ← Live progress, stage by stage
+├── DECISIONS.md                         ← Every owner ruling, numbered and dated
+├── state.json                          ← Decisions + progress (machine-readable)
 ├── scripts/                            ← Docx generation
 ├── research/
-│   ├── language-lexicon.md             ← Phrase library
-│   └── source-*.md                     ← Raw source extractions
+│   ├── language-lexicon.md             ← Phrase library (from-scratch mode)
+│   └── source-*.md                     ← Raw source extractions / per-stage discovery (refresh mode)
 └── deliverables/
     ├── messaging-hierarchy-template.md ← SOURCE OF TRUTH
     └── [ProductName]-Messaging-Hierarchy.docx
@@ -82,8 +88,10 @@ Use [specific number]. Not [other versions]. [Who corrected this and when.]
 | File | When to read |
 |------|-------------|
 | `LAUNCH.md` | ALWAYS — first on every resume |
+| `CHECKLIST.md` | ALWAYS — second, to see exactly where things stand |
 | `messaging-hierarchy-template.md` | ALWAYS — before any content work |
-| `state.json` | When you need rationale for past decisions |
+| `DECISIONS.md` | When you need the exact ruling and its date |
+| `state.json` | When you need machine-readable rationale for past decisions |
 | `language-lexicon.md` | When drafting new copy |
 
 ---

@@ -1,9 +1,12 @@
 {
   "project": "[Product Name] — Launch Messaging",
+  "mode": "from_scratch",
   "created": "YYYY-MM-DD",
   "last_updated": "YYYY-MM-DD",
   "current_phase": 1,
   "current_phase_name": "Research & Positioning",
+  "checklist_file": "CHECKLIST.md",
+  "decisions_file": "DECISIONS.md",
   "source_materials": {
     "indexed": null,
     "files": []
@@ -16,16 +19,29 @@
       "tasks": {
         "folder_created": "complete",
         "launch_md_written": "complete",
+        "checklist_written": "complete",
+        "decisions_log_started": "complete",
         "state_json_initialized": "complete"
       }
     },
     "1_phrase_library": {
+      "note": "from_scratch mode only — quarterly_refresh mode uses 1_discovery_stages instead",
       "status": "not_started",
       "tasks": {
         "source_materials_read": "not_started",
         "lexicon_built": "not_started"
       },
       "output_file": "research/language-lexicon.md"
+    },
+    "1_discovery_stages": {
+      "note": "quarterly_refresh mode only",
+      "status": "not_started",
+      "stages": {
+        "stage_1_current_website": "not_started",
+        "stage_2_shipped_since_last_version": "not_started",
+        "stage_3_outside_signals": "not_started",
+        "stage_4_inside_knowledge": "not_started"
+      }
     },
     "2_hard_rules": {
       "status": "not_started",

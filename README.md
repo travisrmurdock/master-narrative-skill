@@ -15,7 +15,7 @@ A reusable skill that guides Claude through building a complete B2B product or c
 
 ## What the skill does
 
-Builds a complete messaging hierarchy for any B2B product or company launch:
+Builds or refreshes a complete messaging hierarchy for any B2B product or company:
 - Positioning foundation (best-fit customer, market category, competitive alternatives, differentiated capabilities, one-line positioning)
 - Galvanizing narrative ("the big idea")
 - 3 messaging pillars with proof points
@@ -25,7 +25,12 @@ Builds a complete messaging hierarchy for any B2B product or company launch:
 - Asset mapping (press release, website, deck, email)
 - Elevator pitches (15s, 30s, 2min)
 
-Creates a persistent project folder for each engagement, so the work can be resumed across sessions.
+Creates a persistent project folder for each engagement, with a live `CHECKLIST.md` and a dated `DECISIONS.md` decision log, so the work can be resumed across sessions.
+
+### Two modes
+
+- **From scratch** — no prior messaging hierarchy exists. The skill builds a phrase library from whatever source materials exist (pitch deck, one-pager, website, sales scripts, etc.) and fills the hierarchy from there.
+- **Quarterly refresh** — a prior approved hierarchy exists and needs updating against what changed. The skill runs four discovery stages in order — the current website (carry / change / drop each claim), what shipped since the last version, outside signals (category and competitors), and inside knowledge (numbers, verified customer list, the positioning owner's accumulated knowledge) — each stage ending with questions to the owner before the next stage starts. Only after all four stages close does it move on to hard rules and the fill.
 
 ---
 
@@ -33,9 +38,9 @@ Creates a persistent project folder for each engagement, so the work can be resu
 
 **Option 1 — Drag and drop**: Drag `launch-messaging.skill` into the Cowork plugins area.
 
-**Option 2 — GitHub repo**: Install directly from this repo:
+**Option 2 — GitHub repo**: Put this in a GitHub repo and teammates install with:
 ```
-claude plugins add travisrmurdock/master-narrative-skill
+claude plugins add <your-org>/<your-repo>
 ```
 
 ---
@@ -51,9 +56,17 @@ Once installed, Claude uses this skill automatically when someone says things li
 
 ---
 
-## Editing the skill
+## What this is NOT
 
-The `launch-messaging/` directory contains the unpacked source files. The `.skill` file is a zip archive. To edit:
+This folder is **completely separate** from any specific company's launch messaging project. A project folder created by running this skill (its own `LAUNCH.md`, `CHECKLIST.md`, `DECISIONS.md`, `state.json`, and messaging hierarchy template) belongs to that engagement and should never be modified based on anything in this skill folder.
 
-1. Modify files in `launch-messaging/`
-2. Repackage: `zip -r launch-messaging.skill launch-messaging/`
+This skill is *built from* lessons learned running real messaging projects, generalized into a tool for any product — it is not a continuation of, or a replacement for, any one company's project.
+
+---
+
+## Source files (for editing the skill)
+
+The editable skill source lives in `launch-messaging/` next to this README (`SKILL.md` plus `references/`). Edit those files directly, then repackage using:
+```bash
+python -m scripts.package_skill launch-messaging/ "Master Narrative Skill/"
+```

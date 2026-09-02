@@ -171,7 +171,7 @@
 
 - **What they own**: [Their scope of responsibility]
 - **Primary pain today**: "[Their pain in their own words — quote format, first person]"
-- **Primary message**: [CopilotKit/product gives [persona] [benefit] so they can [outcome].]
+- **Primary message**: [Product gives [persona] [benefit] so they can [outcome].]
 - **Top 2 pillars for this persona**:
   - Pillar [X]: "[Why this pillar matters in their language]"
   - Pillar [Y]: "[Why this pillar matters in their language]"
