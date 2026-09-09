@@ -1,14 +1,38 @@
 # [Product Name] — Messaging Hierarchy Template
 
-**Version**: [X.X] ([date])
-**Owner**: [Name, Title]
+**Version**: [X.X] ([date]) · **Status**: [DRAFT - Not Approved / APPROVED] · **Owner**: [Name, Title]
 **Usage**: Single source of truth for all launch communications. Every downstream asset (press release, landing page, sales deck, email sequence) pulls directly from this document.
+
+*Version and status stay in the document's title and file name, never only in a project-tracking file. Every version that has been through an owner review cycle (PHASE 6) opens as DRAFT, whatever its status was before that review — a document does not carry APPROVED forward through changes the owner has not yet seen. The version number increments on every review cycle, approved or not.*
 
 ---
 
 ## 1. POSITIONING FOUNDATION
 
-### 1a. Competitive Alternatives
+Sections 1a through 1f run in reading order, and reading order is also fill order — this is the order in which each section is drafted, because each depends on the section before it.
+
+### 1a. Best-Fit Customer
+*Who cares the most about the value you deliver?*
+
+- **Company profile**: [Size, type, industry, tech profile]
+- **Buying trigger**: [The exact moment that sends them looking — what just happened or just broke?]
+- **Must-have criteria**:
+  - [Criterion 1]
+  - [Criterion 2]
+  - [Criterion 3]
+
+**If the product has a free or open-source tier**, name both buyers and the moment each one shows up:
+- **The evaluator** (before the first call or the proof of concept): usually the person who will use or build with the product day to day. What do they need to see to bring this to someone else?
+- **The buying committee** (after the evaluator is interested): the group that approves spend — procurement, security, legal, finance, or a mix. They are not asking about features; they are checking that the foundation is right (compliance, risk, data residency, vendor stability) and confirming they are not paying for something the free tier already gives away. Name what they need stated plainly so the evaluator can carry it to them.
+
+### 1b. Market Category
+*What frame of reference helps the buyer immediately understand what this is?*
+
+- **Category name**: [Your category]
+- **Category story**: [Why this category exists now — what changed in the world that created it?]
+- **Entry point / discovery hook**: [The more familiar language buyers search for that leads them to you]
+
+### 1c. Competitive Alternatives
 *What would customers do if your product didn't exist?*
 
 | Alternative | How customers solve this today |
@@ -19,9 +43,10 @@
 | [Alternative 4] | [Description] |
 | [Alternative 5] | [Description] |
 
-### 1b. Differentiated Capabilities
+### 1d. Differentiated Capabilities
 *What can you do that alternatives cannot?*
 *NOTE: Mark the lead differentiator with ⭐ — the #1 problem buyers hit first.*
+*NOTE: One feature keeps one name everywhere it appears in this document — a feature is never given a second name in parentheses.*
 
 | Capability | Why alternatives can't match it |
 |---|---|
@@ -29,33 +54,26 @@
 | [Capability 2] | [Why it's uniquely yours] |
 | [Capability 3] | [Why it's uniquely yours] |
 
-### 1c. Differentiated Value
+### 1e. Differentiated Value
 *What business outcomes do those capabilities enable?*
 
-| Capability | → Business Outcome |
+| Capability | Business Outcome |
 |---|---|
-| ⭐ [Lead differentiator] | → [Concrete business outcome] |
-| [Capability 2] | → [Concrete business outcome] |
-| [Capability 3] | → [Concrete business outcome] |
+| ⭐ [Lead differentiator] | [Concrete business outcome] |
+| [Capability 2] | [Concrete business outcome] |
+| [Capability 3] | [Concrete business outcome] |
 
 **🔖 Flagged phrase for prominent use**: *"[The one phrase that captures the outcome best]"*
 
-### 1d. Best-Fit Customer
-*Who cares the most about the value you deliver?*
+**If the product has a free or open-source tier**, add a table naming exactly what the paid product does that the free tier cannot, with one column per buyer named in 1a:
 
-- **Company profile**: [Size, type, industry, tech profile]
-- **Buying trigger**: [The exact moment that sends them looking — what just happened or just broke?]
-- **Must-have criteria**:
-  - [Criterion 1]
-  - [Criterion 2]
-  - [Criterion 3]
+| Capability | What it means for the evaluator | What it means for the buying committee |
+|---|---|---|
+| [Capability 1] | [What they can now do or stop doing] | [What risk or compliance question this answers] |
+| [Capability 2] | [...] | [...] |
+| [Capability 3] | [...] | [...] |
 
-### 1e. Market Category
-*What frame of reference helps the buyer immediately understand what this is?*
-
-- **Category name**: [Your category]
-- **Category story**: [Why this category exists now — what changed in the world that created it?]
-- **Entry point / discovery hook**: [The more familiar language buyers search for that leads them to you]
+This table is the answer to the objection "why pay for what the free tier already gives away" in Section 6c — point to it rather than re-arguing the case there.
 
 ### 1f. One-Line Positioning Statement
 
@@ -127,6 +145,8 @@
 
 ## 4. PROOF POINT BANK
 
+*Every row is numbered once, and the number stays the same for the life of the document — the Sources section at the end and any downstream asset both refer to a row by that number. No table in this section has a Source or Date column; every source and date lives once, in the Sources section at the end of the document.*
+
 **⚠️ NAMED CUSTOMER USAGE RULES:**
 - **Web / PR / Public**: [List approved companies — verified in CRM as closed/paying]
 - **Sales / NDA meetings / Internal**: [All named companies can be referenced]
@@ -159,9 +179,9 @@
 
 ### Named Customers — Sales / NDA Only
 
-| # | Company | Source | Use case | Approved for |
-|---|---|---|---|---|
-| 6 | [Company] | [Source doc] | [Use case] | Sales, NDA meetings |
+| # | Company | Use case | Approved for |
+|---|---|---|---|
+| 6 | [Company] | [Use case] | Sales, NDA meetings |
 
 ---
 
@@ -216,6 +236,8 @@
 3. **[Differentiator 3]**: [Why this matters]
 
 ### 6c. Objection Handling
+
+*If the product has a free or open-source tier, one row of this table must be "Why pay for what the free tier already gives away?" — answer it by pointing to the table in Section 1e, not by re-arguing the case here.*
 
 | Objection | Response |
 |---|---|
@@ -299,6 +321,23 @@
 > [Social proof close + CTA.]
 
 ---
+
+## SOURCES
+
+*Every numbered row in Section 4 appears here once, with its source and the date it was pulled. Group rows that share one source into a single line so every number is accounted for without repeating a citation. This is the only place a source or a date appears in the document — no proof-point table, capability row, or persona angle has its own Source or Date column or an inline citation.*
+
+| Rows | Source | Date pulled |
+|---|---|---|
+| [1–2] | [Dashboard, CRM view, or document name] | [Date] |
+| [3] | [Source] | [Date] |
+
+## WHERE THIS DOCUMENT DIFFERS FROM THE PRIMARY SOURCE
+
+*Only populated in quarterly refresh mode. Every departure logged during Stage 1 (the current-website read) or found later in the fill process lands here, one row per departure, in the same table regardless of which section it affects. State the reason in plain language — never as a decision number or an internal rule number, which mean nothing to a reader outside the team.*
+
+| Section | Old wording (primary source) | New wording (this document) | Reason |
+|---|---|---|---|
+| [1a buying trigger] | [What the primary source said, or "Nothing — the source never addresses this"] | [What this document says] | [Plain-language reason a reader can act on] |
 
 ## REFERENCE
 

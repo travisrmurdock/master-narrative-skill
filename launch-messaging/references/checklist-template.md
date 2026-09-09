@@ -62,15 +62,33 @@ Each step: draft → review against `DECISIONS.md` and this checklist → owner 
 - [ ] 11. Asset mapping and elevator pitches (7, appendix)
 
 ## Stage 7 — Deliverables (skill Phases 4 and 5)
-- [ ] Word document generated from the approved markdown
+- [ ] Voice scrub complete (skill VOICE SCRUB section), two passes: mechanical patterns (em dashes) first, then a sampled re-read for sentence-shape patterns (reveals, negative litanies, arrow labels)
+- [ ] Word document generated from the approved markdown, built from the organization's own brand guide, rendered to PDF and looked at page by page before delivery
 - [ ] Deliverable copy filed wherever the owner keeps launch documents; link recorded in `LAUNCH.md`
 - [ ] Departures from the primary source listed in one section of the document, each with its reason, plus the summary table
 - [ ] `LAUNCH.md`, `CHECKLIST.md`, and `state.json` updated for the next refresh
+
+## Stage 8 — Owner review cycle (skill Phase 6, runs whenever a reviewed copy comes back)
+
+Each task below maps to one comment or edit in the review extraction; the exact task names, owners, and count depend on what the review contains. This is the standing shape, not a fixed list.
+
+- [ ] **T1 — Bring in the reviewed copy and extract.** Copy the owner's marked-up file into a dated `review-[date]/` folder. Run (or write, if this is the first cycle) the comment-and-tracked-change extraction script; save a copy of the script in the project. Produce a verbatim extraction document — no interpretation added yet.
+- [ ] **T2 — Log every ruling.** Every comment and edit becomes a numbered, dated entry in `DECISIONS.md`, in the owner's own words where possible, before any editing starts.
+- [ ] **T3 — Build the review checklist.** One row per comment/edit: what the owner said, the decision number, the task that resolves it, and who owns that task.
+- [ ] **T4 — Content-meaning changes.** Whatever task(s) the checklist assigns to changes in what the document claims or argues. Runs first — everything after this depends on the meaning being settled.
+- [ ] **T5 — Reader-facing cleanup.** Remove asides, justification blocks, decision/rule numbers, and file paths from the body per "The document speaks to its reader" (skill PHASE 3). Runs after T4 closes.
+- [ ] **T6 — Voice scrub.** Both passes, per the skill's VOICE SCRUB section. Runs after T5 closes.
+- [ ] **T7 — Document build.** Rebuild the Word document from the scrubbed markdown (skill PHASE 4); render to PDF and check the pages. Runs after T6 closes.
+- [ ] **T8 — Independent verification.** An agent or reviewer who did none of T4–T7's work checks every item in the review checklist against the actual rebuilt document, pass/fail with evidence, not against the tasks' own change logs.
+- [ ] **Fix batch.** Every fail from T8 gets fixed, then only the failed checks are re-run — not the full list — unless a fix could plausibly have touched something else.
+- [ ] **Overwrite in place.** The rebuilt files replace the prior version in the shared folder (skill PHASE 5) by overwriting the existing file path, not deleting and re-uploading, so an existing link keeps working.
+- [ ] **Status and version reset.** Header status returns to DRAFT (whatever it was before this cycle) and the version number increments; the new version, status, and date all appear in the file name. The document stays DRAFT until the owner says otherwise.
 
 ---
 
 ## Standing rules for every step
 - The primary source (the live website, or whatever the hard rules name) is authoritative; any deviation is flagged with its reason. The hierarchy informs how everyone discusses the product; it never dictates changes to the website or any other asset.
 - Named customers appear in public copy only if verified against the system of record today.
-- Every number cites its source and date.
+- Every number cites its source and date, and every source/date lives once, in the end-of-document Sources section — never in a proof-point table itself.
 - Nothing is written into the hierarchy until the discovery stages and the hard rules stage are closed.
+- Agents do not edit this checklist. A worker marks its own task's row done in its own brief or change log and tells the coordinator; only the coordinator opens, closes, or resets a row here.

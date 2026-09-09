@@ -84,5 +84,20 @@
     }
   },
   "decisions": [],
+  "reviews": [
+    {
+      "date": "YYYY-MM-DD",
+      "reviewed_file": "review-YYYY-MM-DD/[reviewed-copy-filename]",
+      "comment_count": null,
+      "edit_count": null,
+      "decisions_range": "e.g. 48-65",
+      "checklist_file": "review-YYYY-MM-DD/CHECKLIST-review-YYYY-MM-DD.md",
+      "tasks": [],
+      "verification_outcome": "not_started | fails_open | all_pass",
+      "fix_batch_applied": false,
+      "status_after_cycle": "DRAFT",
+      "version_after_cycle": null
+    }
+  ],
   "notes": []
 }

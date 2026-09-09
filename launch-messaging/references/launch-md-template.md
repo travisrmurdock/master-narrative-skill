@@ -19,6 +19,7 @@
    - Creating a downstream asset? → Pull from the template, see "Phase Plan"
    - Adding new source material? → Extract to `research/language-lexicon.md`, then update template
    - Running the next quarterly refresh? → Follow the skill's four-stage discovery process, logging into `DECISIONS.md` as you go
+   - A reviewed copy came back with comments or tracked changes? → Follow the skill's PHASE 6 owner review cycle, starting a new dated `review-[date]/` folder
    - Updating named customers? → Re-verify before any public-facing changes
 
 5. **Read additional files only as needed**:
@@ -56,6 +57,9 @@ Use [specific number]. Not [other versions]. [Who corrected this and when.]
 - Avoid: [word list]
 - Prefer: [word list]
 
+### 7. One Feature, One Name
+[Feature] is always called [the one approved name], never [other names used elsewhere for the same thing]. Every owner-ruled number is listed here with its value, and this list is updated the same day the owner rules on it — everywhere else that number appears in the hierarchy gets the update too, not only the row the ruling was about.
+
 ---
 
 ## EDITING WORKFLOW
@@ -79,10 +83,14 @@ Use [specific number]. Not [other versions]. [Who corrected this and when.]
 ├── research/
 │   ├── language-lexicon.md             ← Phrase library (from-scratch mode)
 │   └── source-*.md                     ← Raw source extractions / per-stage discovery (refresh mode)
-└── deliverables/
-    ├── messaging-hierarchy-template.md ← SOURCE OF TRUTH
-    └── [ProductName]-Messaging-Hierarchy.docx
+├── review-[date]/                      ← One folder per owner review cycle (skill PHASE 6): the reviewed copy, the comment/edit extraction, the review checklist, and each task's own change log
+├── deliverables/
+│   ├── messaging-hierarchy-template.md ← SOURCE OF TRUTH
+│   ├── [ProductName]-Messaging-Hierarchy.docx
+│   └── drive-mirror/                   ← Byte-for-byte mirror of the shared-drive folder, if the team keeps one (see below)
 ```
+
+**If the team keeps a shared drive folder** the wider organization can reach, it lives next to the document (not buried inside this project folder) with one sub-folder per version — e.g. "Version 1.0", "Version 2 - [period]" — never one flat folder mixing every version together. `deliverables/drive-mirror/` above holds a byte-for-byte copy of that folder's current contents, so the project stays self-contained even if the shared drive is unreachable. Only files the wider organization needs go in the shared folder itself: the hierarchy document, the hard rules, the decision log, and source materials worth referencing. Everything internal to the drafting team — `scripts/`, `research/` raw exports, `state.json`, `CHECKLIST.md`, this file — stays out of the shared folder and lives only here.
 
 ### File Roles
 | File | When to read |
@@ -93,6 +101,7 @@ Use [specific number]. Not [other versions]. [Who corrected this and when.]
 | `DECISIONS.md` | When you need the exact ruling and its date |
 | `state.json` | When you need machine-readable rationale for past decisions |
 | `language-lexicon.md` | When drafting new copy |
+| `review-[date]/` | When picking up an owner review cycle already in progress, or starting a new one |
 
 ---
 
