@@ -72,6 +72,8 @@ Each step: draft → review against `DECISIONS.md` and this checklist → owner 
 
 Each task below maps to one comment or edit in the review extraction; the exact task names, owners, and count depend on what the review contains. This is the standing shape, not a fixed list.
 
+A review from someone other than the project's owner (a CTO, a sales leader, another named reviewer) runs through this same eight-task shape. T2's entries carry that reviewer's name, and the owner's own instruction for how to weigh that reviewer's comments is logged as the first entry, before any of that reviewer's comments become tasks.
+
 - [ ] **T1 — Bring in the reviewed copy and extract.** Copy the owner's marked-up file into a dated `review-[date]/` folder. Run (or write, if this is the first cycle) the comment-and-tracked-change extraction script; save a copy of the script in the project. Produce a verbatim extraction document — no interpretation added yet.
 - [ ] **T2 — Log every ruling.** Every comment and edit becomes a numbered, dated entry in `DECISIONS.md`, in the owner's own words where possible, before any editing starts.
 - [ ] **T3 — Build the review checklist.** One row per comment/edit: what the owner said, the decision number, the task that resolves it, and who owns that task.
@@ -83,6 +85,25 @@ Each task below maps to one comment or edit in the review extraction; the exact 
 - [ ] **Fix batch.** Every fail from T8 gets fixed, then only the failed checks are re-run — not the full list — unless a fix could plausibly have touched something else.
 - [ ] **Overwrite in place.** The rebuilt files replace the prior version in the shared folder (skill PHASE 5) by overwriting the existing file path, not deleting and re-uploading, so an existing link keeps working.
 - [ ] **Status and version reset.** Header status returns to DRAFT (whatever it was before this cycle) and the version number increments; the new version, status, and date all appear in the file name. The document stays DRAFT until the owner says otherwise.
+
+---
+
+## Stage 9: Derived asset (skill Phase 7, runs whenever a short asset is built from an approved hierarchy)
+
+A derived asset is a spoken sales messaging guide, a one-pager, or a battlecard, built from an already-approved hierarchy. Run these tasks in order; the exact owners depend on who is available.
+
+- [ ] **D1: Research facts.** Research any fact the asset needs that the hierarchy does not hold, from contracts and internal playbooks. Write each fact with its source and date. Take only the questions the files do not answer to the owner.
+- [ ] **D2: Format decision.** Decide the asset type, the page budget in printed lines, and the block layout. Write the decision down before drafting starts.
+- [ ] **D3: Draft.** Write every block from the hierarchy and the D1 research file only. Time each block for speech at 150 words a minute. Every block closes with one moat line stating why a free or open-source tier cannot do this, except the one block that names the paid product.
+- [ ] **D4: Page-fit check.** Check the draft against the page budget right after the first draft, before the sales-pace review, the voice scrub, or the audience QA run.
+- [ ] **D5: Sales-pace review.** Read every block aloud as a seller would. Time it. Cut anything a seller would not say. Confirm every block stands alone.
+- [ ] **D6: Fact check.** Check every number, name, and claim against the hierarchy. Nothing in the asset traces to a source outside the hierarchy and the D1 research file.
+- [ ] **D7: Voice scrub.** Both passes, per the skill's VOICE SCRUB section.
+- [ ] **D8: Build.** Build the formatted document from the scrubbed draft. Render it to PDF. Produce every word count and line count by script, never by typing a count by hand.
+- [ ] **D9: Owner page check.** Look at the actual rendered pages and confirm the page budget is met before the next step runs.
+- [ ] **D10: Audience QA.** A reviewer who did not draft the asset reads it as each named reader (for a sales asset: the buyer, the technical person beside them, and the seller who has to say it) and writes one pass-or-fail line per section per reader. Check the reader instructions against the plain-language protocol separately.
+- [ ] **D11: Verification.** An independent reviewer checks every fact, every page-budget and timing rule, and every reviewer-requested addition against the built document, pass or fail with evidence, not against a task's own change log.
+- [ ] **D12: Drive placement.** Place the file in the shared folder next to the hierarchy (skill PHASE 5). Mirror it into the project folder. Confirm the file id through the shared-drive connector.
 
 ---
 

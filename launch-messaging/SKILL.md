@@ -6,7 +6,7 @@ description: >
 
 # Launch Messaging Skill
 
-**Version 2.1 — 08September2026.** Adds PHASE 6, the owner review cycle: turning an owner's tracked-change markup into a dated decision log, a review checklist, dependency-ordered fixes, and independent verification. Adds drafting rules that keep the document speaking to its reader instead of to the team that built it, a two-pass voice scrub, brand-first document design, reading-order section numbering, a two-buyer pattern for products with an open-source or free tier, and a rule against editing the orchestrator's checklist. See CHANGELOG at the bottom.
+**Version 2.2 — 10September2026.** Adds PHASE 7, building a short derived asset (a spoken sales messaging guide, a one-pager, a battlecard) from an approved hierarchy. Adds an audience QA step, where a reviewer who did not draft the document reads it as each named reader and gives a pass or fail per section. Adds owner-review-cycle rules for a reviewer who is not the owner, for a comment that belongs in the hierarchy as well as the asset, for a Google Docs round trip that can drop typed text, and for keeping a shared-drive link stable through an overwrite and a rename. Adds two orchestration rules: an instruction to a worker lives in that worker's brief file, and a script recount settles any disagreement between a worker's report and the file itself. See CHANGELOG at the bottom.
 
 You are helping someone build or refresh a complete, approved messaging hierarchy for a product or company. The output is a structured document that becomes the single source of truth for a press release, website, sales deck, and all other launch materials.
 
@@ -215,6 +215,10 @@ The finished hierarchy is read by people who never sat in on its drafting — a 
 - **No warning blocks aimed at the writer.** A "⚠️" callout should carry operational content the reader needs (a usage rule, a status marker) — never a note reminding the writing team to re-check something before the next draft.
 - **No inline "[deviation from the source: ...]" brackets in the body.** Track every departure in the one summary table at the end (see the drafting rule above); the body reads as finished copy, not as a marked-up draft.
 
+### Audience QA
+
+Before the pre-build check below runs, a reviewer who did not draft the section reads it as each reader the document names, the persona or personas that section speaks to, and writes one line per section per reader: pass, or fail with the reason and a rewrite. Check any reader-facing instructional text (how-to-use lines, section intros) against the plain-language protocol in the same pass, as its own pass-or-fail line, separate from the messaging pass-or-fail lines.
+
 Run this check as its own pass before Phase 4 (document generation) begins — a "pre-build check" against every section, not only against the sections a comment happened to touch.
 
 ---
@@ -234,6 +238,10 @@ If the owner's organization uses a plain-language or simplified-English protocol
 When this skill runs inside a multi-agent setup, the coordinating agent dispatches each research and drafting step — reading a website, pulling social posts, drafting a section — to a worker agent with a written brief and a specific output path, then reviews the worker's result before taking it to the owner. **The coordinator does not read whole websites, scroll through social feeds, or transcribe designs by hand** — that work goes to a worker agent so the coordinator's context stays free for judgment calls and owner conversation. Before driving any SaaS tool (a CRM, an analytics dashboard, a design tool, a docs site) by hand — clicking through a UI, screen-scraping a page — check whether an MCP server or API already exists for that tool and use it instead.
 
 **Worker agents never edit the coordinator's own checklist.** A worker marks its own row done in its task brief or its own change log, but the running project checklist (`CHECKLIST.md`, or an owner-review checklist under PHASE 6) is the coordinator's bookkeeping — only the coordinator opens, closes, or resets a row in it. If a worker finds its own row already marked done by mistake, it flags that to the coordinator rather than editing the file itself.
+
+**Every instruction to a worker is written into that worker's brief file before, or at the moment, it is sent.** A message that exists only in chat, with no matching line in the brief, can be refused as untrusted, since the worker has no record it was actually asked for. When an instruction changes mid-task, write the change into the brief first, then send the worker a message naming the change plainly: "re-read the section named [X] in your brief."
+
+**When a worker's report disagrees with the file it describes** (a word count, a page count, a line count), the checker recounts by script against the file itself, and the file wins. A worker's own report is a claim about the file, not a substitute for reading it.
 
 ---
 
@@ -328,31 +336,75 @@ Save this script inside the project (not only run once and discarded) so the nex
 
 Produce one extraction document listing every comment and every edit, verbatim, with no interpretation or ranking added at this stage — the next step turns them into decisions and tasks, but the extraction itself is a faithful record of what the owner wrote.
 
+**A file reviewed in Google Docs and downloaded back as a `.docx` keeps every comment but can drop typed text the reviewer added directly in the body.** When a reviewer says they added a passage and the extraction finds no new body text, check the comments before concluding nothing was added: the addition is usually written inside a comment instead. Treat that comment as the request itself, and say plainly in the decision log that the addition came from a comment, not from a tracked change in the body.
+
 ### 3. Record every ruling before any editing starts
 
-Before a single word of the document changes, turn every comment into a numbered, dated decision in `DECISIONS.md`, in the owner's own words where possible. This is the same discipline PHASE 0 and PHASE 2 already require for every other ruling — a review comment is a ruling like any other, and nothing downstream should require the owner to repeat what they already said in the file.
+Before a single word of the document changes, turn every comment into a numbered, dated decision in `DECISIONS.md`, in the reviewer's own words where possible. This is the same discipline PHASE 0 and PHASE 2 already require for every other ruling — a review comment is a ruling like any other, and nothing downstream should require the reviewer to repeat what they already said in the file.
 
-### 4. Build a review checklist that maps comment to task to owner
+**A review can come from someone other than the project's owner:** a CTO, a sales leader, another named reviewer the owner asked to weigh in. Every comment from that reviewer still becomes its own numbered decision, quoted verbatim, with that reviewer's name attached, so a reader of the decision log can tell whose ruling it was. Before any of that reviewer's comments become tasks, log the owner's own instruction for how to treat them (adopt every one, treat them as input to weigh against the owner's own view, and so on) as the first decision of the cycle.
 
-One row per comment or edit: what the owner said (short form), which decision number it became, which task will resolve it, and which agent or person owns that task. If several comments point at the same underlying issue (for example, three separate comments that all bear on one paragraph's wording), it is fine for one task to resolve all of them — say so in the row rather than duplicating the task.
+### 4. When the reviewed document is a derived asset, check the hierarchy too
+
+A comment on a derived asset (see PHASE 7) can raise a message the asset states but the hierarchy has never captured. For every such comment, search the hierarchy for the concept the comment raises, not for the comment's exact words, because the hierarchy may already hold the same idea in different wording. If the concept is genuinely absent, add the same message to the hierarchy, in the sections a seller or a marketer would look for it, as a new DRAFT version of the hierarchy, in this same review cycle rather than a separate one.
+
+### 5. Build a review checklist that maps comment to task to owner
+
+One row per comment or edit: what the reviewer said (short form), which decision number it became, which task will resolve it, and which agent or person owns that task. If several comments point at the same underlying issue (for example, three separate comments that all bear on one paragraph's wording), it is fine for one task to resolve all of them — say so in the row rather than duplicating the task.
 
 If the project runs as a multi-agent setup and the owner asks for the standing orchestration reminder ("the coordinator dispatches, it does not do the work itself"), put that sentence at both the top and the bottom of the checklist, so it is visible whichever end of the list is read first.
 
-### 5. Run the tasks in dependency order
+### 6. Run the tasks in dependency order
 
-Content-meaning changes first (anything that changes what a sentence claims or argues), then reader-facing cleanup (removing asides, justification, and internal citations per "The document speaks to its reader" above), then the voice scrub (both passes, per the VOICE SCRUB section above), then the document build (PHASE 4), then independent verification (step 6 below), then a fix batch for whatever verification finds, then re-verification of just the fixed items. Running cleanup before the meaning changes settle, or the voice scrub before cleanup, means redoing work once the earlier step lands.
+Content-meaning changes first (anything that changes what a sentence claims or argues), then reader-facing cleanup (removing asides, justification, and internal citations per "The document speaks to its reader" above), then the voice scrub (both passes, per the VOICE SCRUB section above), then the document build (PHASE 4), then audience QA (see PHASE 3's audience QA step, run against the rebuilt document, one pass-or-fail line per section per named reader), then independent verification (step 7 below), then a fix batch for whatever verification finds, then re-verification of just the fixed items. Running cleanup before the meaning changes settle, or the voice scrub before cleanup, means redoing work once the earlier step lands.
 
-### 6. Verify independently, against every comment
+### 7. Verify independently, against every comment
 
 Assign this check to whoever did none of the drafting or cleanup work on this cycle. For every comment and edit in the extraction, the reviewer confirms pass or fail against the actual current document, with the exact evidence (a line number, a grep result, a rendered page) — never a restatement of what the task's own change log claims was done. A reviewer who only reads the change logs is auditing the work's own self-report, not the work.
 
 Report the result as one line per item: pass, fail, or a judgment call flagged for a ruling, each with its evidence. Route every fail to a fix batch, apply the fixes, then re-run only the checks that failed — not the whole list again, unless the fix could plausibly have touched something else.
 
-### 7. Overwrite in place; stay DRAFT until told otherwise
+### 8. Overwrite in place; stay DRAFT until told otherwise
 
-When the fixed document replaces a copy that already lives in a shared folder (per PHASE 5), overwrite that file in place rather than deleting and re-uploading it, so a link the owner or the team already has to it keeps working.
+When the fixed document replaces a copy that already lives in a shared folder (per PHASE 5), overwrite that file in place rather than deleting and re-uploading it, so a link the owner or the team already has to it keeps working. Overwrite first, then rename the file to its new version name, in that order, so the file id, and the link built on it, never changes. Confirm the file id through the shared-drive connector after the rename rather than assume a desktop sync attribute proves the file is current. That attribute is not always present. Tell the owner plainly that the reviewers' links did not change.
+
+**The delivered version number is the reviewed version number plus one.** Internal draft numbers used between passes while the cycle is still running are never printed on the delivered document; only the version the reviewer saw, and the version now delivered, are reader-facing numbers.
 
 **The document's status line returns to DRAFT the moment a review cycle opens, and its version number increments, whatever the status was before the review.** A document that was APPROVED going into a review cycle is not APPROVED again until the owner explicitly says so for this new version — an owner's comments on a document do not carry its old approval forward. Reflect the new version and status in the file name as well as the header (version, status word, and date all in the file name), so a reader can tell which state a copy is in without opening it.
+
+---
+
+## PHASE 7: DERIVED ASSETS
+
+This phase runs when a short asset needs to be built from an already-approved hierarchy: a spoken sales messaging guide, a one-pager, a battlecard. Run it after PHASE 5 closes. A derived asset is built from an approved hierarchy, never from one still in draft.
+
+### 1. The hierarchy is the only source of numbers and names
+
+The asset cites nothing the hierarchy does not already hold. When the asset needs a fact the hierarchy does not have (a services offer, a proof-of-concept motion, support terms), research it first, from contracts and internal playbooks, and write down that fact's source and date alongside it. Take that research to the owner only for what the files do not answer. Do not ask the owner to confirm something already sourced.
+
+### 2. Composable blocks
+
+Every block in the asset stands alone and can be spoken in any order; no block depends on another being read first. Time every block for speech at 150 words a minute and print that time on the block. Open each block with a line the seller says out loud. Close every block, except the one block described below, with one line stating why a free or open-source tier alone cannot do this, without naming the paid product. Name the paid product in exactly one block: the answer to a direct question about it.
+
+### 3. Reader instructions follow plain language; the messaging itself does not
+
+Anything in the asset that tells the reader how to use it, a "how to use this" line, a heading, a footer, follows the plain-language protocol: short sentences, one instruction per line, every acronym spelled out once, nothing left for the reader to decode. The messaging lines the seller speaks keep the hierarchy's own voice and are not bound by that protocol.
+
+### 4. Set the page budget in lines, before drafting
+
+Decide the page budget in printed lines, not words, before the first draft starts. Report "lines over" on every build once that limit is set. When a build runs over, work in this order, before cutting any spoken content: shorten table cells so every row prints on one line, set list items to one printed line each, merge short bullet lists into a paragraph, and put the running footer on one line. Cut spoken content last, and never cut the lines that do the asset's job: the ask for the next meeting, a fact the owner ruled on, or an addition a reviewer asked for.
+
+### 5. Check page fit before the voice scrub and the audience QA
+
+Check page fit right after the first draft, before the voice scrub (see the VOICE SCRUB section above) and the audience QA below run. Checking fit last means both the scrub and the QA run twice: once on text that does not fit, and again after it is cut down to fit.
+
+### 6. Word counts come from a script, not a hand count
+
+Produce every word count in a draft with a script, never by typing a count by hand. A hand-typed count can drift from the true count and cost a fact-check round redone for nothing.
+
+### 7. Audience QA
+
+A reviewer who did not draft the asset reads it as each named reader in turn. For a sales asset, that means the buyer, the technical person beside them on the call, and the seller who has to say it out loud. The reviewer writes one line per section per reader: pass, or fail with the reason and a rewrite. Give the asset's reader instructions their own plain-language pass or fail, one line per instruction, separate from the messaging pass-or-fail lines.
 
 ---
 
@@ -390,6 +442,7 @@ These apply to hierarchy copy unless the user specifies otherwise (see the VOICE
 
 ## CHANGELOG
 
+- **2.2 — 10September2026**: Added PHASE 7, building a short derived asset (a spoken sales messaging guide, a one-pager, a battlecard) from an approved hierarchy: the hierarchy as the only source of numbers and names, with any missing fact researched and sourced before it reaches the owner; composable blocks timed for speech, each closing with an unnamed moat line except the one block that names the paid product; reader instructions in plain language while the messaging itself keeps the hierarchy's voice; a page budget set in lines before drafting, with a fixed cutting order that protects spoken content last; page-fit checked before the voice scrub and the audience QA; and word counts produced by script rather than typed by hand. Added an audience QA step (a reviewer who did not draft the document reads it as each named reader and gives a pass or fail per section, with reader instructions checked separately against the plain-language protocol) to PHASE 3 before the pre-build check, to PHASE 6's dependency order after the document build, and to PHASE 7. Added to PHASE 6: a rule that a review can come from someone other than the owner, with the owner's own instruction for weighing that reviewer's comments logged first; a step checking whether a comment on a derived asset belongs in the hierarchy too, searched by concept rather than by exact wording; a caveat that a Google Docs round trip through `.docx` can drop typed text while keeping every comment, so an addition with no matching body text is usually sitting inside a comment instead; and a Drive-overwrite order (overwrite in place, then rename, then confirm the file id through the connector) that keeps a reviewer's link stable, plus a rule that the delivered version number is the reviewed number plus one. Added two ORCHESTRATION rules: every instruction to a worker is written into that worker's brief before or when it is sent, and a script recount against the file settles any disagreement between a worker's report and the file itself. Added a Stage 9 (derived asset) block to `checklist-template.md` and a note on Stage 8 that a reviewer other than the owner runs through the same shape.
 - **2.1 — 08September2026**: Added PHASE 6, the owner review cycle (extract every comment and tracked change verbatim with a reusable script, log each as a decision before editing, build a comment-to-task-to-owner checklist, run fixes in dependency order, verify independently against every comment, overwrite the shared copy in place, reset status to DRAFT and increment the version on every cycle). Added "The document speaks to its reader, never to the team that wrote it" drafting rules and a pre-Phase-4 check for justification blocks, decision/rule numbers, drafter names, file paths, writer-facing warnings, and inline deviation brackets. Sharpened VOICE to name the one instructional-text exception to the messaging/plain-language split, with numbered steps and two-to-four-sentence section intros. Added a two-pass VOICE SCRUB phase (em dashes, set-up-and-reveal, dramatic reveals, repeated negative lists, arrow labels, drafting-process asides, colon reveals, question marks) with a punctuation-only carve-out for paragraphs already approved verbatim. Rewrote PHASE 4 to build from the organization's own brand guide first, with an 11pt body floor, natural spacing, a light single accent color, a five-column table limit, and a mandatory rendered-PDF check before delivery. Renumbered the messaging hierarchy template's Section 1 into reading order (best-fit customer, market category, alternatives, capabilities, value, positioning statement) and updated PHASE 3's fill order to match. Added a two-buyer pattern (an evaluator before the first call, a buying committee after) for products with a free or open-source tier, with a paid-vs-free capability table and a matching objection row. Added a one-feature-one-name hard rule and a same-day, everywhere-the-number-appears rule for owner-ruled figures. Moved proof-point sources and dates out of every table into one end-of-document Sources section. Added a shared-folder layout to PHASE 5 (one sub-folder per version, a byte-for-byte project-folder mirror, internal-only files excluded, overwrite in place). Added a rule to ORCHESTRATION that a worker agent never edits the coordinator's own checklist. Added a "reviews" entry shape to `state-json-template.json` and a Stage 8 (owner review cycle) block to `checklist-template.md`.
 - **2.0 — 02September2026**: Added the quarterly refresh mode (four discovery stages, each ending in owner questions, replacing Phase 1 when a prior approved hierarchy exists). Added `CHECKLIST.md` and `DECISIONS.md` as standing project files, and the `references/checklist-template.md` reference. Expanded Phase 2 hard rules with product-name/language-ban reconciliation, a sourced numbers rule, a named-customer verification rule, and a must-have-capabilities rule. Expanded Phase 3 with three-option positioning statements, public/sales narrative versions, inline+tabled departure tracking, absence-claim softening, a ban on the "M-by-N to M-plus-N" construction, a ban on month-to-month reader-math comparisons, and hypothesis confidence marking. Added SCOPE OF THE DOCUMENT, VOICE, and ORCHESTRATION notes.
 - **1.0**: Initial release — from-scratch messaging hierarchy build, 11-step dependency-ordered fill, Word document generation.
